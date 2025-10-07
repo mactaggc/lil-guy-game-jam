@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dg7q77bycgfq1"]
+[gd_scene load_steps=6 format=3 uid="uid://dg7q77bycgfq1"]
 
+[ext_resource type="Script" uid="uid://bb345oead7thx" path="res://Prefabs/Player/Player.cs" id="1_5wxv7"]
 [ext_resource type="Texture2D" uid="uid://bd4ue44aahvx3" path="res://Sprites/Spritesheet.png" id="1_y6xdh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5wxv7"]
@@ -21,6 +22,7 @@ animations = [{
 size = Vector2(14, 15)
 
 [node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_5wxv7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -29,3 +31,5 @@ sprite_frames = SubResource("SpriteFrames_y5hcb")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_2nftw")
+
+[node name="Movement" type="Node" parent="."]
