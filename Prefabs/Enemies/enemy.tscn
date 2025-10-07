@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://cryppi023ymi0"]
+
+[ext_resource type="Script" uid="uid://dxpbc0hiq2adx" path="res://Prefabs/Enemies/Enemy.cs" id="1_whbcb"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_whbcb"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Run",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_54l14"]
+
+[node name="Enemy" type="Area2D"]
+script = ExtResource("1_whbcb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_whbcb")
+animation = &"Walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_54l14")

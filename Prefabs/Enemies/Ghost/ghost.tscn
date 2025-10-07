@@ -1,10 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://b5ylpsjjb342t"]
+[gd_scene load_steps=5 format=3 uid="uid://b5ylpsjjb342t"]
 
 [ext_resource type="Script" uid="uid://cu44ecbyd1134" path="res://Prefabs/Enemies/Ghost/Ghost.cs" id="1_guo4s"]
-[ext_resource type="Texture2D" uid="uid://c74jvhm37vskx" path="res://icon.svg" id="2_7fmko"]
+[ext_resource type="Script" uid="uid://cewlphkbe2eb8" path="res://Prefabs/Enemies/Ghost/gMovement.cs" id="3_7fmko"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qg73x"]
 size = Vector2(89, 35)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_guo4s"]
 
 [node name="Ghost" type="Area2D"]
 script = ExtResource("1_guo4s")
@@ -13,8 +15,10 @@ script = ExtResource("1_guo4s")
 position = Vector2(4.5, -10.5)
 shape = SubResource("RectangleShape2D_qg73x")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_7fmko")
+[node name="Movement" type="Node" parent="."]
+script = ExtResource("3_7fmko")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_guo4s")
 
 [connection signal="body_entered" from="." to="." method="OnPlayerEnter"]
