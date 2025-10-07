@@ -7,21 +7,23 @@ public partial class Enemy : Area2D
     [Export] public int health;
     [Export] public float speed;
     [Export] public float jumpHeight;
-
-    public void OnPlayerEnter(PhysicsBody2D body)
-    {
-        if (body.IsInGroup("player"))
-        {
-            GD.Print("Works");
-        }
-    }
+    public Vector2 pos;
+    public bool inView;
     public override void _Ready()
     {
         AddToGroup("enemy");
+        inView = false;
     }
 
-    public void Move()
+    public void Move(Vector2 pos, bool a)
+    { 
+        Position = Position.MoveToward(pos, speed * (float)GetProcessDeltaTime());
+    }
+
+    public override void _Process(double delta)
     {
-
+        Move(pos, inView);
     }
+
+
 }

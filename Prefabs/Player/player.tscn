@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dg7q77bycgfq1"]
+[gd_scene load_steps=10 format=3 uid="uid://dg7q77bycgfq1"]
 
 [ext_resource type="Script" uid="uid://bb345oead7thx" path="res://Prefabs/Player/Player.cs" id="1_5wxv7"]
 [ext_resource type="Texture2D" uid="uid://bd4ue44aahvx3" path="res://Sprites/Spritesheet.png" id="1_y6xdh"]
@@ -13,6 +13,10 @@ region = Rect2(16, 0, 16, 16)
 atlas = ExtResource("1_y6xdh")
 region = Rect2(0, 0, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_21ygf"]
+atlas = ExtResource("1_y6xdh")
+region = Rect2(0, 16, 16, 16)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_y5hcb"]
 animations = [{
 "frames": [{
@@ -26,10 +30,13 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5wxv7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_21ygf")
 }],
 "loop": true,
 "name": &"Idle",
-"speed": 5.0
+"speed": 1.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2nftw"]
@@ -45,6 +52,8 @@ script = ExtResource("3_sysjd")
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_y5hcb")
 animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.19492327
 script = ExtResource("4_21ygf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -13,26 +13,17 @@ public partial class pMovement : Node
     {
         Vector2 velocity = player.Velocity;
 
-        if (Input.IsActionPressed("ui_right"))
-        {
-            velocity.X = player.SPEED; // 300
-        }
-        else if (Input.IsActionPressed("ui_left"))
-        {
-            velocity.X = -player.SPEED;
-        }
-        else
-        {
-            velocity.X = 0;
-        }
+        //Getting input strength, and moving our player by applying speed.
+        velocity.X = Input.GetAxis("ui_left","ui_right") * player.SPEED; // SPEED == 300
+
 
         if (Input.IsActionJustPressed("ui_up") && player.IsOnFloor())
         {
-            velocity.Y = -player.JUMP_VELOCITY; // -400
+            velocity.Y += player.JUMP_VELOCITY; // -400
         }
 
-        velocity.Y = Math.Clamp(velocity.Y, -player.JUMP_VELOCITY, 1200);
-        velocity.Y += 1200 * delta;
+        velocity.Y = Mathf.Clamp(velocity.Y, player.JUMP_VELOCITY, -player.JUMP_VELOCITY*2); // Limiting the player's verticle movement i.e. can fall twice as fast as he can jump.
+        velocity.Y += 800 * delta;
         player.Velocity = velocity;
         player.MoveAndSlide();
     }
