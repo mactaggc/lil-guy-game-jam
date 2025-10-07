@@ -1,8 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://dg7q77bycgfq1"]
+[gd_scene load_steps=9 format=3 uid="uid://dg7q77bycgfq1"]
 
 [ext_resource type="Script" uid="uid://bb345oead7thx" path="res://Prefabs/Player/Player.cs" id="1_5wxv7"]
 [ext_resource type="Texture2D" uid="uid://bd4ue44aahvx3" path="res://Sprites/Spritesheet.png" id="1_y6xdh"]
 [ext_resource type="Script" uid="uid://dtv0p8rov2kk4" path="res://Prefabs/Player/pMovement.cs" id="3_sysjd"]
+[ext_resource type="Script" uid="uid://e14qgqnweyis" path="res://Prefabs/Player/pAnimationController.cs" id="4_21ygf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_you5p"]
+atlas = ExtResource("1_y6xdh")
+region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5wxv7"]
 atlas = ExtResource("1_y6xdh")
@@ -12,10 +17,18 @@ region = Rect2(0, 0, 16, 16)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_you5p")
+}],
+"loop": true,
+"name": &"Bite",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_5wxv7")
 }],
 "loop": true,
-"name": &"default",
+"name": &"Idle",
 "speed": 5.0
 }]
 
@@ -31,6 +44,8 @@ script = ExtResource("3_sysjd")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_y5hcb")
+animation = &"Idle"
+script = ExtResource("4_21ygf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)

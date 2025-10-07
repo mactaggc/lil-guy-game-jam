@@ -6,11 +6,14 @@
 texture = ExtResource("1_aq2yn")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSet" id="TileSet_jquwn"]
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_v7047")
 
 [node name="TileMapLayer" type="TileMapLayer"]
+texture_filter = 1
 tile_set = SubResource("TileSet_jquwn")
 use_kinematic_bodies = true

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5ylpsjjb342t"]
+
+[ext_resource type="Script" uid="uid://cu44ecbyd1134" path="res://Prefabs/Enemies/Ghost/Ghost.cs" id="1_guo4s"]
+[ext_resource type="Texture2D" uid="uid://c74jvhm37vskx" path="res://icon.svg" id="2_7fmko"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qg73x"]
+size = Vector2(89, 35)
+
+[node name="Ghost" type="Area2D"]
+script = ExtResource("1_guo4s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4.5, -10.5)
+shape = SubResource("RectangleShape2D_qg73x")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_7fmko")
+
+[connection signal="body_entered" from="." to="." method="OnPlayerEnter"]
