@@ -1,9 +1,16 @@
-[gd_scene load_steps=10 format=3 uid="uid://dg7q77bycgfq1"]
+[gd_scene load_steps=13 format=3 uid="uid://dg7q77bycgfq1"]
 
 [ext_resource type="Script" uid="uid://bb345oead7thx" path="res://Prefabs/Player/Player.cs" id="1_5wxv7"]
 [ext_resource type="Texture2D" uid="uid://bd4ue44aahvx3" path="res://Sprites/Spritesheet.png" id="1_y6xdh"]
-[ext_resource type="Script" uid="uid://dtv0p8rov2kk4" path="res://Prefabs/Player/pMovement.cs" id="3_sysjd"]
+[ext_resource type="Script" uid="uid://cbh63np3mofxr" path="res://Prefabs/Player/EatDetection.cs" id="2_you5p"]
+[ext_resource type="Script" uid="uid://dtv0p8rov2kk4" path="res://Prefabs/Player/pInput.cs" id="3_sysjd"]
 [ext_resource type="Script" uid="uid://e14qgqnweyis" path="res://Prefabs/Player/pAnimationController.cs" id="4_21ygf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_you5p"]
+size = Vector2(20, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ucnkw"]
+size = Vector2(20, 4)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_you5p"]
 atlas = ExtResource("1_y6xdh")
@@ -45,8 +52,29 @@ size = Vector2(14, 15)
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_5wxv7")
 
-[node name="Movement" type="Node" parent="."]
+[node name="EatDetection" type="Node" parent="."]
+script = ExtResource("2_you5p")
+
+[node name="Input" type="Node" parent="."]
 script = ExtResource("3_sysjd")
+
+[node name="HitDetector" type="Area2D" parent="."]
+position = Vector2(7, 0)
+collision_layer = 129
+collision_mask = 129
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitDetector"]
+position = Vector2(12, 0)
+shape = SubResource("RectangleShape2D_you5p")
+
+[node name="HitDetector2" type="Area2D" parent="."]
+position = Vector2(-7, 0)
+collision_layer = 129
+collision_mask = 129
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitDetector2"]
+position = Vector2(-12, 0)
+shape = SubResource("RectangleShape2D_ucnkw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -63,3 +91,6 @@ shape = SubResource("RectangleShape2D_2nftw")
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
+
+[connection signal="body_entered" from="HitDetector" to="EatDetection" method="OnBodyEnter"]
+[connection signal="body_entered" from="HitDetector2" to="EatDetection" method="OnBodyEnter2"]

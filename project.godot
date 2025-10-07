@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Lil Guy Game Jam"
+run/main_scene="uid://bkayyq0o2oqel"
 config/features=PackedStringArray("4.5", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 

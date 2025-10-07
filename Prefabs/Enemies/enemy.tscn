@@ -31,5 +31,3 @@ animation = &"Walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_54l14")
-
-[connection signal="body_entered" from="." to="." method="OnPlayerEnter"]

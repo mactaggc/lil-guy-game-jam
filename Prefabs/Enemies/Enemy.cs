@@ -8,21 +8,19 @@ public partial class Enemy : Area2D
     [Export] public float speed;
     [Export] public float jumpHeight;
     public Vector2 pos;
-    public bool inView;
     public override void _Ready()
     {
         AddToGroup("enemy");
-        inView = false;
     }
 
-    public void Move(Vector2 pos, bool a)
+    public void Move(Vector2 pos)
     { 
         Position = Position.MoveToward(pos, speed * (float)GetProcessDeltaTime());
     }
 
     public override void _Process(double delta)
     {
-        Move(pos, inView);
+        Move(pos);
     }
 
 
