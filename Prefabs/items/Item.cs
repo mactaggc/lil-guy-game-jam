@@ -4,12 +4,13 @@ using System.Runtime.Intrinsics.X86;
 
 public partial class Item : Area2D
 {
+    //Base class for all item scenes.
     [Export] public int healthAdd;
-    //[Export] public int teleport;
     [Export] public string itemDescription;
     [Export] public int eMultiplier;
 
-    public Label textLabel;
+    //When Making new item, add all dependencies to scene that are listed below.
+    Label textLabel;
     public override void _Ready()
     {
         AddToGroup("candy");

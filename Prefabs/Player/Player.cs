@@ -4,8 +4,8 @@ using System.Runtime.Serialization;
 
 public partial class Player : CharacterBody2D
 {
-    [Export] public float SPEED = 250;
-    [Export] public float JUMP_VELOCITY = -300;
+    [Export] public float speed = 250;
+    [Export] public float jump_velocity = -300;
     [Export] public int health;
     [Export] public int candyC;
     public bool isBiting;

@@ -17,14 +17,14 @@ public partial class pInput : Node
         Vector2 velocity = player.Velocity;
 
         //Getting input strength, and moving our player by applying speed.
-        velocity.X = Input.GetAxis("ui_left", "ui_right") * player.SPEED; // SPEED == 300
+        velocity.X = Input.GetAxis("ui_left", "ui_right") * player.speed; // speed == 300
 
         if (Input.IsActionJustPressed("ui_up") && player.IsOnFloor())
         {
-            velocity.Y += player.JUMP_VELOCITY; // -400
+            velocity.Y += player.jump_velocity; // -400
         }
 
-        velocity.Y = Mathf.Clamp(velocity.Y, player.JUMP_VELOCITY, -player.JUMP_VELOCITY * 2); // Limiting the player's verticle movement i.e. can fall twice as fast as he can jump.
+        velocity.Y = Mathf.Clamp(velocity.Y, player.jump_velocity, -player.jump_velocity * 2); // Limiting the player's verticle movement i.e. can fall twice as fast as he can jump.
         velocity.Y += 800 * delta;
         player.Velocity = velocity;
         player.MoveAndSlide();
@@ -34,6 +34,7 @@ public partial class pInput : Node
     {
         if (Input.IsActionJustPressed("ui_accept"))
         {
+            // Enabling EatDetections Area2D to detect Areas within its collision box.
             eatDetection.hd1.Monitoring = true;
             eatDetection.hd2.Monitoring = true;
             player.isBiting = true;

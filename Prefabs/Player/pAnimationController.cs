@@ -30,10 +30,4 @@ public partial class pAnimationController : AnimatedSprite2D
         if (p.isBiting)
             p.isBiting = false;
     }
-
-    public void _on_animated_sprite_2d_animation_finished()
-    {
-        if (p.isBiting)
-            p.isBiting = false;
-    }
 }
