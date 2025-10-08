@@ -6,6 +6,7 @@ public partial class Player : CharacterBody2D
 {
     [Export] public float SPEED = 250;
     [Export] public float JUMP_VELOCITY = -300;
+    [Export] public int health;
     [Export] public int candyC;
     pInput input;
     pAnimationController anim;
@@ -16,7 +17,7 @@ public partial class Player : CharacterBody2D
         anim = GetNode<pAnimationController>("AnimatedSprite2D");
     }
 
-    public override void _Process(double delta)
+    public override void _PhysicsProcess(double delta)
     {
         input.Eat();
         input.Move((float)delta);

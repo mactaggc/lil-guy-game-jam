@@ -1,8 +1,11 @@
 using Godot;
 using System;
+using System.Runtime.Intrinsics.X86;
 
 public partial class Item : Area2D
 {
+    [Export] public int healthAdd;
+    [Export] public int teleport;
     [Export] public string itemDescription;
     [Export] public int eMultiplier;
 
@@ -15,9 +18,10 @@ public partial class Item : Area2D
         textLabel.Hide();
     }
 
-    public void statusEffect()
+    public void statusEffect(Player p)
     {
-
+        if(IsQueuedForDeletion())
+            p.health += healthAdd;
     }
 
     public void showDescription()

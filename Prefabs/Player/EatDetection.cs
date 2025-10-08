@@ -18,12 +18,14 @@ public partial class EatDetection : Node
     }
 
 
-    public void OnBodyEnter(Area2D body)
+    public void OnBodyEnter(Item body)
     {
         if (body.IsInGroup("candy"))
         {
             body.QueueFree();
-            p.candyC += 1;        }
+            body.statusEffect(p);
+            p.candyC += 1;
+        }
     }
 
     public void OnBodyEnter2(Area2D body)

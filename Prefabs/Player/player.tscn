@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://dg7q77bycgfq1"]
+[gd_scene load_steps=14 format=3 uid="uid://dg7q77bycgfq1"]
 
 [ext_resource type="Script" uid="uid://bb345oead7thx" path="res://Prefabs/Player/Player.cs" id="1_5wxv7"]
 [ext_resource type="Texture2D" uid="uid://bd4ue44aahvx3" path="res://Sprites/Spritesheet.png" id="1_y6xdh"]
+[ext_resource type="Script" uid="uid://excljnn2na0o" path="res://Prefabs/Player/HitManager.cs" id="2_ucnkw"]
 [ext_resource type="Script" uid="uid://cbh63np3mofxr" path="res://Prefabs/Player/EatDetection.cs" id="2_you5p"]
 [ext_resource type="Script" uid="uid://dtv0p8rov2kk4" path="res://Prefabs/Player/pInput.cs" id="3_sysjd"]
 [ext_resource type="Script" uid="uid://e14qgqnweyis" path="res://Prefabs/Player/pAnimationController.cs" id="4_21ygf"]
@@ -51,11 +52,11 @@ size = Vector2(14, 15)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_5wxv7")
+health = 10
 metadata/_edit_horizontal_guides_ = [-181.0]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(3, 3)
-drag_horizontal_enabled = true
+[node name="HitManager" type="Node" parent="."]
+script = ExtResource("2_ucnkw")
 
 [node name="EatDetection" type="Node" parent="."]
 script = ExtResource("2_you5p")
@@ -94,6 +95,10 @@ script = ExtResource("4_21ygf")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_2nftw")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+drag_horizontal_enabled = true
 
 [connection signal="area_entered" from="HitDetector" to="EatDetection" method="OnBodyEnter"]
 [connection signal="area_entered" from="HitDetector2" to="EatDetection" method="OnBodyEnter2"]
