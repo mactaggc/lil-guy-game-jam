@@ -8,6 +8,7 @@ public partial class Player : CharacterBody2D
     [Export] public float JUMP_VELOCITY = -300;
     [Export] public int health;
     [Export] public int candyC;
+    public bool isBiting;
     pInput input;
     pAnimationController anim;
     public override void _Ready()
@@ -19,9 +20,9 @@ public partial class Player : CharacterBody2D
 
     public override void _PhysicsProcess(double delta)
     {
+        anim.Animate();
         input.Eat();
         input.Move((float)delta);
-        anim.Animate();
     }
 
 }

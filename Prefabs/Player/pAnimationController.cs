@@ -9,24 +9,31 @@ public partial class pAnimationController : AnimatedSprite2D
     public override void _Ready()
     {
         p = GetParent() as Player;
-        
     }
 
     public void Animate()
     {
+        if (p.Velocity.X > 0)
+            FlipH = false;
+        else if (p.Velocity.X < 0)
+            FlipH = true;
         if (p.Velocity == Vector2.Zero)
-        {
-            Animation = "Idle";
-        }
+            Play("Idle");
         else if (p.Velocity.X != 0)
-        {
-            Animation = "Bite";
-            if (p.Velocity.X > 0)
-                FlipH = false;
-            else if (p.Velocity.X < 0)
-                FlipH = true;
-        }
-        
-        
+            Play("roll");
+        if (p.isBiting)
+            Play("Bite");
+    }
+
+    public void OnAnimationFinish()
+    {
+        if (p.isBiting)
+            p.isBiting = false;
+    }
+
+    public void _on_animated_sprite_2d_animation_finished()
+    {
+        if (p.isBiting)
+            p.isBiting = false;
     }
 }

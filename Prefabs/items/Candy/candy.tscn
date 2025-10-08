@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c3eloko2igj6l"]
+[gd_scene load_steps=10 format=3 uid="uid://c3eloko2igj6l"]
 
 [ext_resource type="Script" uid="uid://bl0e50icusvik" path="res://Prefabs/items/Candy/Candy.cs" id="1_lr1fy"]
 [ext_resource type="Texture2D" uid="uid://bd4ue44aahvx3" path="res://Sprites/Spritesheet.png" id="1_qqi21"]
@@ -11,21 +11,37 @@ size = Vector2(16, 5)
 atlas = ExtResource("1_qqi21")
 region = Rect2(160, 0, 16, 16)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_wu7ut"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_wu7ut"]
+atlas = ExtResource("1_qqi21")
+region = Rect2(160, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j11w8"]
+atlas = ExtResource("1_qqi21")
+region = Rect2(160, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f0icy"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_a0o7d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wu7ut")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j11w8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wu7ut")
 }],
 "loop": true,
-"name": &"default",
-"speed": 5.0
+"name": &"bounce",
+"speed": 2.0
 }]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lr1fy"]
 font = ExtResource("3_a0o7d")
 font_size = 12
-outline_size = 1
 
 [node name="Candy" type="Area2D"]
 collision_layer = 129
@@ -40,7 +56,10 @@ shape = SubResource("RectangleShape2D_lr1fy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-sprite_frames = SubResource("SpriteFrames_wu7ut")
+sprite_frames = SubResource("SpriteFrames_f0icy")
+animation = &"bounce"
+autoplay = "bounce"
+frame_progress = 0.82864434
 
 [node name="Label" type="Label" parent="."]
 texture_filter = 1

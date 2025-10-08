@@ -7,7 +7,10 @@ public partial class Enemy : Area2D
     [Export] public int health;
     [Export] public float speed;
     [Export] public float jumpHeight;
-    public Vector2 pos;
+    [Export] public bool moveType; // Determines what kind of movement the enemy uses. Either Move towards Player or back and forth movement.
+    [Export] public Vector2 posA; // Used for both player detection or moving between two points.
+    [Export] public Vector2 posB; // Second point for MoveBAF
+    private bool dir; // Used for BAF to determine what point to move to.
     public override void _Ready()
     {
         AddToGroup("enemy");
@@ -18,11 +21,20 @@ public partial class Enemy : Area2D
         Position = Position.MoveToward(pos, speed * delta);
     }
 
-    public override void _Process(double delta)
+    public void MoveBAF(Vector2 pos1, Vector2 pos2, float delta)
     {
-        Move(pos, (float)delta);
+        if (dir == true && Position != pos1)
+        {
+            Position.MoveToward(pos2, speed);
+        }
+        
     }
 
-    
-
+    public override void _Process(double delta)
+    {
+        if (moveType)
+            Move(posA, (float)delta);
+        else
+            MoveBAF(posA, posB, (float)delta);
+    }
 }

@@ -5,7 +5,7 @@ using System.Runtime.Intrinsics.X86;
 public partial class Item : Area2D
 {
     [Export] public int healthAdd;
-    [Export] public int teleport;
+    //[Export] public int teleport;
     [Export] public string itemDescription;
     [Export] public int eMultiplier;
 

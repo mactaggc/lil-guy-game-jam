@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://l0u46hcmt4wp"]
+[gd_scene load_steps=3 format=3 uid="uid://l0u46hcmt4wp"]
 
 [ext_resource type="Script" uid="uid://ck7fcssy4kkc5" path="res://Prefabs/TestObject.cs" id="1_0ck8q"]
-[ext_resource type="Texture2D" uid="uid://c74jvhm37vskx" path="res://icon.svg" id="1_do5we"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nch3a"]
 size = Vector2(24, 24)
@@ -16,4 +15,3 @@ shape = SubResource("RectangleShape2D_nch3a")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("1_do5we")

@@ -5,6 +5,7 @@ public partial class pInput : Node
 {
     Player player;
     EatDetection eatDetection;
+    
     public override void _Ready()
     {
         player = GetParent() as Player;
@@ -31,10 +32,11 @@ public partial class pInput : Node
 
     public void Eat()
     {
-        if (Input.IsActionPressed("ui_accept"))
+        if (Input.IsActionJustPressed("ui_accept"))
         {
             eatDetection.hd1.Monitoring = true;
             eatDetection.hd2.Monitoring = true;
+            player.isBiting = true;
         }
         else
         {

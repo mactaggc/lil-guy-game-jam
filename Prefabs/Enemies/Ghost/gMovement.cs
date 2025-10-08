@@ -15,12 +15,12 @@ public partial class gMovement : Node
     {
         if (body.IsInGroup("player"))
         {
-            ghost.pos = body.Position;
+            ghost.posA = body.Position;
             GD.Print("This Works!!");
         }
         else
         {
-            ghost.pos = ghost.Position;
+            ghost.posA = ghost.Position;
         }
     }
 }
