@@ -31,10 +31,15 @@ public partial class pInput : Node
 
     public void Eat()
     {
-        if (Input.IsActionJustPressed("ui_accept"))
+        if (Input.IsActionPressed("ui_accept"))
         {
-            eatDetection.eatBpressed = true;
+            eatDetection.hd1.Monitoring = true;
+            eatDetection.hd2.Monitoring = true;
         }
-        else eatDetection.eatBpressed = false;
+        else
+        {
+            eatDetection.hd1.Monitoring = false;
+            eatDetection.hd2.Monitoring = false;
+        }
     }
 }

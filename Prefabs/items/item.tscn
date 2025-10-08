@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhrtsa78nnh4y"]
+
+[ext_resource type="Script" uid="uid://c6b162ot6pwk1" path="res://Prefabs/items/Item.cs" id="1_o5ej2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7w31x"]
+
+[node name="item" type="Area2D"]
+collision_layer = 129
+collision_mask = 129
+script = ExtResource("1_o5ej2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_7w31x")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 8.0
+offset_bottom = 23.0
+
+[connection signal="mouse_entered" from="." to="." method="OnMouseEnter"]
+[connection signal="mouse_exited" from="." to="." method="OnMouseExit"]

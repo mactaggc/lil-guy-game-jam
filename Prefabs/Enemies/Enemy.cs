@@ -13,15 +13,16 @@ public partial class Enemy : Area2D
         AddToGroup("enemy");
     }
 
-    public void Move(Vector2 pos)
-    { 
-        Position = Position.MoveToward(pos, speed * (float)GetProcessDeltaTime());
+    public void Move(Vector2 pos, float delta)
+    {
+        Position = Position.MoveToward(pos, speed * delta);
     }
 
     public override void _Process(double delta)
     {
-        Move(pos);
+        Move(pos, (float)delta);
     }
 
+    
 
 }

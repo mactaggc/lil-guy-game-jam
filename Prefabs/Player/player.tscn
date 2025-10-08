@@ -51,6 +51,11 @@ size = Vector2(14, 15)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_5wxv7")
+metadata/_edit_horizontal_guides_ = [-181.0]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+drag_horizontal_enabled = true
 
 [node name="EatDetection" type="Node" parent="."]
 script = ExtResource("2_you5p")
@@ -60,8 +65,9 @@ script = ExtResource("3_sysjd")
 
 [node name="HitDetector" type="Area2D" parent="."]
 position = Vector2(7, 0)
-collision_layer = 129
-collision_mask = 129
+collision_layer = 128
+collision_mask = 128
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitDetector"]
 position = Vector2(12, 0)
@@ -69,8 +75,9 @@ shape = SubResource("RectangleShape2D_you5p")
 
 [node name="HitDetector2" type="Area2D" parent="."]
 position = Vector2(-7, 0)
-collision_layer = 129
-collision_mask = 129
+collision_layer = 128
+collision_mask = 128
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitDetector2"]
 position = Vector2(-12, 0)
@@ -88,9 +95,5 @@ script = ExtResource("4_21ygf")
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_2nftw")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
-position_smoothing_enabled = true
-
-[connection signal="body_entered" from="HitDetector" to="EatDetection" method="OnBodyEnter"]
-[connection signal="body_entered" from="HitDetector2" to="EatDetection" method="OnBodyEnter2"]
+[connection signal="area_entered" from="HitDetector" to="EatDetection" method="OnBodyEnter"]
+[connection signal="area_entered" from="HitDetector2" to="EatDetection" method="OnBodyEnter2"]

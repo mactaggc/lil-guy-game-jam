@@ -1,0 +1,27 @@
+using Godot;
+using System;
+
+public partial class Item : Area2D
+{
+    [Export] public string itemDescription;
+    [Export] public int eMultiplier;
+
+    public Label textLabel;
+    public override void _Ready()
+    {
+        AddToGroup("candy");
+        textLabel = GetNode<Label>("Label");
+        textLabel.Text = itemDescription;
+        textLabel.Hide();
+    }
+
+    public void statusEffect()
+    {
+
+    }
+
+    public void showDescription()
+    {
+        textLabel.Visible = !textLabel.Visible;
+    }
+}

@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class TestObject : RigidBody2D
+public partial class TestObject : Area2D
 {
 	public override void _Ready()
 	{

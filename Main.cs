@@ -3,15 +3,17 @@ using System;
 
 public partial class Main : Node2D
 {
-    CharacterBody2D player;
+    Player player;
+    Label candycounter;
 
     public override void _Ready()
     {
-        player = GetNode<CharacterBody2D>("Player");
+        player = GetNode("Player") as Player;
+        candycounter = GetNode("CanvasLayer").GetNode<Label>("Candies");
     }
     public override void _Process(double delta)
     {
-
+        candycounter.Text = "Candies Collected: " + player.candyC;
     }
 
 }
