@@ -3,7 +3,7 @@ using System;
 
 public partial class Rat : Enemy
 {
-    public void OnPlayerEnter(PhysicsBody2D body)
+    public void OnPlayerEnter(Node2D body)
     {
         if (body.IsInGroup("player"))
         {

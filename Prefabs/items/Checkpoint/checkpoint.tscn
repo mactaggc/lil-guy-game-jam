@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://bb8y2auqs875u"]
+
+[ext_resource type="Script" uid="uid://3nwdechdfm7q" path="res://Prefabs/items/Checkpoint/Checkpoint.cs" id="1_xlb3t"]
+[ext_resource type="Texture2D" uid="uid://bd4ue44aahvx3" path="res://Sprites/Spritesheet.png" id="2_daar4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xlb3t"]
+size = Vector2(12, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xowev"]
+atlas = ExtResource("2_daar4")
+region = Rect2(192, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_daar4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xowev")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Checkpoint" type="Area2D"]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_xlb3t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 1.5)
+shape = SubResource("RectangleShape2D_xlb3t")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_daar4")
+
+[connection signal="body_entered" from="." to="." method="OnPlayerEnter"]

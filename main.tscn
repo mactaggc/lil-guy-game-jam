@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://bkayyq0o2oqel"]
+[gd_scene load_steps=9 format=4 uid="uid://bkayyq0o2oqel"]
 
 [ext_resource type="Script" uid="uid://tnyvlgatyjk4" path="res://Main.cs" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://bywt4myw1i065" path="res://Prefabs/Tilemap.tscn" id="2_h2yge"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c3eloko2igj6l" path="res://Prefabs/items/Candy/candy.tscn" id="5_7mycd"]
 [ext_resource type="FontFile" uid="uid://dwgu87gneyhl1" path="res://BoldPixels.ttf" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://bb4vo1lipio82" path="res://Prefabs/Enemies/Rat/rat.tscn" id="6_272bh"]
+[ext_resource type="PackedScene" uid="uid://bb8y2auqs875u" path="res://Prefabs/items/Checkpoint/checkpoint.tscn" id="7_272bh"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_272bh"]
 font = ExtResource("6_7mycd")
@@ -68,3 +69,6 @@ position = Vector2(154, 24)
 speed = 100.0
 posA = Vector2(50, 24)
 posB = Vector2(185, 24)
+
+[node name="Checkpoint" parent="." instance=ExtResource("7_272bh")]
+position = Vector2(302, -40)

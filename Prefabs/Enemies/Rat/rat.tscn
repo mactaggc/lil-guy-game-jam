@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bb4vo1lipio82"]
+[gd_scene load_steps=8 format=3 uid="uid://bb4vo1lipio82"]
 
 [ext_resource type="Script" uid="uid://f2wr2dewx1tu" path="res://Prefabs/Enemies/Rat/Rat.cs" id="1_7cn3s"]
 [ext_resource type="Texture2D" uid="uid://bd4ue44aahvx3" path="res://Sprites/Spritesheet.png" id="2_k8tew"]
@@ -7,11 +7,18 @@
 atlas = ExtResource("2_k8tew")
 region = Rect2(96, 0, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_k8tew"]
+atlas = ExtResource("2_k8tew")
+region = Rect2(96, 16, 16, 16)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_pg0bo"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_v6mfw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k8tew")
 }],
 "loop": true,
 "name": &"idle",
@@ -36,6 +43,7 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_pg0bo")
 animation = &"idle"
 autoplay = "idle"
+frame_progress = 0.26785946
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 5.5)

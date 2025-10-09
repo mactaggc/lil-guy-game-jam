@@ -49,7 +49,6 @@ public partial class Enemy : Area2D
             dir = true;
         if (Position.IsEqualApprox(posB))
             dir = false;
-
     }
 
     public override void _Process(double delta)

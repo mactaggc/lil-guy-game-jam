@@ -4,8 +4,8 @@ using System.Runtime.Serialization;
 
 public partial class Player : CharacterBody2D
 {
-    [Export] public float speed = 250;
-    [Export] public float jump_velocity = -300;
+    [Export] public float speed;
+    [Export] public float jump_velocity;
     [Export] public int health;
     [Export] public int candyC;
     public bool isBiting;
@@ -20,11 +20,16 @@ public partial class Player : CharacterBody2D
         hit = GetNode("HitManager") as HitManager;
     }
 
+    public void AcceptSave(int h, int c)
+    {
+        health = h;
+        candyC = c;
+    }
+
     public override void _PhysicsProcess(double delta)
     {
         anim.Animate();
         input.Eat();
         input.Move((float)delta);
     }
-
 }
