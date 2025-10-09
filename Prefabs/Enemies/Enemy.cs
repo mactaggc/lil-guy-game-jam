@@ -6,6 +6,7 @@ public partial class Enemy : Area2D
 {
     //Base class and functions for enemy type scenes.
     [Export] public int health;
+    [Export] public int damage;
     [Export] public float speed;
     [Export] public float jumpHeight;
     [Export] public bool moveType; // Determines what kind of movement the enemy uses. Either Move towards Player or back and forth movement.
@@ -13,14 +14,18 @@ public partial class Enemy : Area2D
     [Export] public Vector2 posB; // Second point for MoveBAF
     private bool dir; // Used for BAF to determine what point to move to.
     AnimatedSprite2D sprite;
+    Player p;
     public override void _Ready()
     {
         AddToGroup("enemy");
+        sprite = GetNode("AnimatedSprite2D") as AnimatedSprite2D;
     }
 
     public void Animate()
     {
-
+        if (dir)
+            sprite.FlipH = true;
+        else sprite.FlipH = false;
     }
     public void Move(Vector2 pos, float delta)
     {
@@ -44,7 +49,7 @@ public partial class Enemy : Area2D
             dir = true;
         if (Position.IsEqualApprox(posB))
             dir = false;
-            
+
     }
 
     public override void _Process(double delta)
@@ -53,5 +58,11 @@ public partial class Enemy : Area2D
             Move(posA, (float)delta);
         else
             MoveBAF(posA, posB, (float)delta);
+        Animate();
+    }
+
+    public void HitPlayer(Player p)
+    {
+        p.hit.GetHit(damage, this);
     }
 }

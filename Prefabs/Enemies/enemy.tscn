@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cryppi023ymi0"]
+[gd_scene load_steps=5 format=3 uid="uid://cryppi023ymi0"]
 
 [ext_resource type="Script" uid="uid://dxpbc0hiq2adx" path="res://Prefabs/Enemies/Enemy.cs" id="1_whbcb"]
 
@@ -22,6 +22,9 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_54l14"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_whbcb"]
+size = Vector2(35, 13)
+
 [node name="Enemy" type="Area2D"]
 script = ExtResource("1_whbcb")
 
@@ -31,3 +34,9 @@ animation = &"Walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_54l14")
+
+[node name="HitDetector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitDetector"]
+position = Vector2(0, 3.5)
+shape = SubResource("RectangleShape2D_whbcb")
