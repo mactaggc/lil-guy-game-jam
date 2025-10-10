@@ -1,7 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://cforktmvhjd41"]
+[gd_scene load_steps=5 format=3 uid="uid://cforktmvhjd41"]
 
 [ext_resource type="Texture2D" uid="uid://da8iwif3xtg28" path="res://Sprites/Iconsheet.png" id="1_3acca"]
 [ext_resource type="Script" uid="uid://d4de0unu5hb6" path="res://Prefabs/Menus/DeathScreen.cs" id="1_sfu00"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wh43x"]
+atlas = ExtResource("1_3acca")
+region = Rect2(0, 0, 80, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sfu00"]
 atlas = ExtResource("1_3acca")
@@ -17,6 +21,22 @@ grow_vertical = 2
 script = ExtResource("1_sfu00")
 
 [node name="Restart" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -216.0
+offset_top = -274.0
+offset_right = 573.0
+offset_bottom = -98.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Restart"
+icon = SubResource("AtlasTexture_wh43x")
+
+[node name="Checkpoint" type="Button" parent="."]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
@@ -31,6 +51,8 @@ offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(3, 3)
+text = "Load From Checkpoint"
 icon = SubResource("AtlasTexture_sfu00")
 
 [connection signal="pressed" from="Restart" to="." method="OnRestartPressed"]
+[connection signal="pressed" from="Checkpoint" to="." method="OnCheckpointPressed"]

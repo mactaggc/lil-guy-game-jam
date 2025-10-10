@@ -5,11 +5,12 @@ public partial class HitManager : Node
 {
     PackedScene _deathScreen = ResourceLoader.Load<PackedScene>("res://Prefabs/Menus/DeathScreen.tscn");
     Player p;
-
+    Main main;
 
     public override void _Ready()
     {
         p = GetParent() as Player;
+        main = GetParent().GetParent() as Main;
     }
 
     private Vector2 Knockback(Enemy enemy)
@@ -19,7 +20,13 @@ public partial class HitManager : Node
 
     private void Death()
     {
-        GetTree().ChangeSceneToPacked(_deathScreen);
+        if(!GetTree().HasGroup("death"))
+        {
+            var r = _deathScreen.Instantiate();
+            p.camera.Enabled = false;
+            main.AddChild(r);
+        }
+        
     }
     
     public void GetHit(int damage, Enemy enemy)

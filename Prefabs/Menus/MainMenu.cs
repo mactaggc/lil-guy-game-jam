@@ -5,7 +5,11 @@ public partial class MainMenu : Control
 {
     PackedScene _test = ResourceLoader.Load<PackedScene>("res://main.tscn");
 
-    public void OnStartPress()
+    public void OnRestartPressed()
+    {
+        
+    }
+    public void OnCheckpointPressed()
     {
         GetTree().ChangeSceneToPacked(_test);
     }
